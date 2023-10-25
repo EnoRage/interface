@@ -37,7 +37,7 @@ export const TraceEvent = memo((props: React.ComponentProps<typeof AnalyticsEven
 TraceEvent.displayName = 'TraceEvent'
 
 export const sendAnalyticsEvent: typeof sendAnalyticsTraceEvent = (event, properties) => {
-  let allowAnalytics = true
+  let allowAnalytics = false
 
   try {
     const value = localStorage.getItem(allowAnalyticsAtomKey)

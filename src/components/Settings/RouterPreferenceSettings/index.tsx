@@ -37,45 +37,45 @@ export default function RouterPreferenceSettings() {
 
   return (
     <>
-      {uniswapXEnabled && (
-        <>
-          <RowBetween gap="sm">
-            <RowFixed>
-              <Column gap="xs">
-                <ThemedText.BodySecondary>
-                  <UniswapXBrandMark />
-                </ThemedText.BodySecondary>
-                <ThemedText.BodySmall color="neutral2">
-                  <Trans>When available, aggregates liquidity sources for better prices and gas free swaps.</Trans>{' '}
-                  <ExternalLink href="https://support.uniswap.org/hc/en-us/articles/17515415311501">
-                    <InlineLink>Learn more</InlineLink>
-                  </ExternalLink>
-                </ThemedText.BodySmall>
-              </Column>
-            </RowFixed>
-            <Toggle
-              id="toggle-uniswap-x-button"
-              // If UniswapX-by-default is enabled we need to render this as active even if routerPreference === RouterPreference.API
-              // because we're going to default to the UniswapX quote.
-              // If the user manually toggles it off, this doesn't apply.
-              isActive={uniswapXInEffect}
-              toggle={() => {
-                if (uniswapXInEffect) {
-                  if (isUniswapXDefaultEnabled) {
-                    // We need to remember if a opts out of UniswapX, so we don't request UniswapX quotes.
-                    dispatch(updateOptedOutOfUniswapX({ optedOutOfUniswapX: true }))
-                  } else {
-                    // We need to remember if a user disables Uniswap X, so we don't show the opt-in flow again.
-                    dispatch(updateDisabledUniswapX({ disabledUniswapX: true }))
-                  }
-                }
-                setRouterPreference(uniswapXInEffect ? RouterPreference.API : RouterPreference.X)
-              }}
-            />
-          </RowBetween>
-          <Divider />
-        </>
-      )}
+      {/*{uniswapXEnabled && (*/}
+      {/*  <>*/}
+      {/*    <RowBetween gap="sm">*/}
+      {/*      <RowFixed>*/}
+      {/*        <Column gap="xs">*/}
+      {/*          <ThemedText.BodySecondary>*/}
+      {/*            <UniswapXBrandMark />*/}
+      {/*          </ThemedText.BodySecondary>*/}
+      {/*          <ThemedText.BodySmall color="neutral2">*/}
+      {/*            <Trans>When available, aggregates liquidity sources for better prices and gas free swaps.</Trans>{' '}*/}
+      {/*            <ExternalLink href="https://support.uniswap.org/hc/en-us/articles/17515415311501">*/}
+      {/*              <InlineLink>Learn more</InlineLink>*/}
+      {/*            </ExternalLink>*/}
+      {/*          </ThemedText.BodySmall>*/}
+      {/*        </Column>*/}
+      {/*      </RowFixed>*/}
+      {/*      <Toggle*/}
+      {/*        id="toggle-uniswap-x-button"*/}
+      {/*        // If UniswapX-by-default is enabled we need to render this as active even if routerPreference === RouterPreference.API*/}
+      {/*        // because we're going to default to the UniswapX quote.*/}
+      {/*        // If the user manually toggles it off, this doesn't apply.*/}
+      {/*        isActive={uniswapXInEffect}*/}
+      {/*        toggle={() => {*/}
+      {/*          if (uniswapXInEffect) {*/}
+      {/*            if (isUniswapXDefaultEnabled) {*/}
+      {/*              // We need to remember if a opts out of UniswapX, so we don't request UniswapX quotes.*/}
+      {/*              dispatch(updateOptedOutOfUniswapX({ optedOutOfUniswapX: true }))*/}
+      {/*            } else {*/}
+      {/*              // We need to remember if a user disables Uniswap X, so we don't show the opt-in flow again.*/}
+      {/*              dispatch(updateDisabledUniswapX({ disabledUniswapX: true }))*/}
+      {/*            }*/}
+      {/*          }*/}
+      {/*          setRouterPreference(uniswapXInEffect ? RouterPreference.API : RouterPreference.X)*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*    </RowBetween>*/}
+      {/*    <Divider />*/}
+      {/*  </>*/}
+      {/*)}*/}
       <RowBetween gap="sm">
         <RowFixed>
           <Column gap="xs">

@@ -67,22 +67,22 @@ export const PageTabs = () => {
       <MenuItem href="/swap" isActive={pathname.startsWith('/swap')}>
         <Trans>Swap</Trans>
       </MenuItem>
-      <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
-        <Trans>Tokens</Trans>
-      </MenuItem>
-      {!shouldDisableNFTRoutes && (
-        <MenuItem dataTestId="nft-nav" href="/nfts" isActive={isNftPage}>
-          <Trans>NFTs</Trans>
-        </MenuItem>
-      )}
+      {/*<MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>*/}
+      {/*  <Trans>Tokens</Trans>*/}
+      {/*</MenuItem>*/}
+      {/*{!shouldDisableNFTRoutes && (*/}
+      {/*  <MenuItem dataTestId="nft-nav" href="/nfts" isActive={isNftPage}>*/}
+      {/*    <Trans>NFTs</Trans>*/}
+      {/*  </MenuItem>*/}
+      {/*)}*/}
       <Box display={{ sm: 'flex', lg: 'none', xxl: 'flex' }} width="full">
         <MenuItem href="/pools" dataTestId="pool-nav-link" isActive={isPoolActive}>
           <Trans>Pools</Trans>
         </MenuItem>
       </Box>
-      <Box marginY="4">
-        <MenuDropdown />
-      </Box>
+      {/*<Box marginY="4">*/}
+      {/*  <MenuDropdown />*/}
+      {/*</Box>*/}
     </>
   )
 }
@@ -129,19 +129,19 @@ const Navbar = ({ blur }: { blur: boolean }) => {
               <PageTabs />
             </Row>
           </Box>
-          <Box
-            className={styles.searchContainer}
-            {...(isNavSearchInputVisible && {
-              display: 'flex',
-            })}
-          >
-            <SearchBar />
-          </Box>
+          {/*<Box*/}
+          {/*  className={styles.searchContainer}*/}
+          {/*  {...(isNavSearchInputVisible && {*/}
+          {/*    display: 'flex',*/}
+          {/*  })}*/}
+          {/*>*/}
+          {/*  <SearchBar />*/}
+          {/*</Box>*/}
           <Box className={styles.rightSideContainer}>
             <Row gap="12">
-              <Box position="relative" display={isNavSearchInputVisible ? 'none' : { sm: 'flex' }}>
-                <SearchBar />
-              </Box>
+              {/*<Box position="relative" display={isNavSearchInputVisible ? 'none' : { sm: 'flex' }}>*/}
+              {/*  <SearchBar />*/}
+              {/*</Box>*/}
               {isNftPage && sellPageState !== ProfilePageStateType.LISTING && <Bag />}
               {!isNftPage && (
                 <Box display={{ sm: 'none', lg: 'flex' }}>

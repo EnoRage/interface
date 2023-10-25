@@ -137,27 +137,27 @@ export default function App() {
   useEffect(() => {
     // User properties *must* be set before sending corresponding event properties,
     // so that the event contains the correct and up-to-date user properties.
-    user.set(CustomUserProperties.USER_AGENT, navigator.userAgent)
-    user.set(CustomUserProperties.BROWSER, getBrowser())
+    // user.set(CustomUserProperties.USER_AGENT, navigator.userAgent)
+    // user.set(CustomUserProperties.BROWSER, getBrowser())
     user.set(CustomUserProperties.SCREEN_RESOLUTION_HEIGHT, window.screen.height)
     user.set(CustomUserProperties.SCREEN_RESOLUTION_WIDTH, window.screen.width)
-    user.set(CustomUserProperties.GIT_COMMIT_HASH, process.env.REACT_APP_GIT_COMMIT_HASH ?? 'unknown')
+    user.set(CustomUserProperties.GIT_COMMIT_HASH, 'unknown')
 
     // Service Worker analytics
-    const isServiceWorkerInstalled = Boolean(window.navigator.serviceWorker?.controller)
-    const isServiceWorkerHit = Boolean((window as any).__isDocumentCached)
-    const serviceWorkerProperty = isServiceWorkerInstalled ? (isServiceWorkerHit ? 'hit' : 'miss') : 'uninstalled'
+    // const isServiceWorkerInstalled = Boolean(window.navigator.serviceWorker?.controller)
+    // const isServiceWorkerHit = Boolean((window as any).__isDocumentCached)
+    // const serviceWorkerProperty = isServiceWorkerInstalled ? (isServiceWorkerHit ? 'hit' : 'miss') : 'uninstalled'
 
-    const pageLoadProperties = { service_worker: serviceWorkerProperty }
-    sendInitializationEvent(SharedEventName.APP_LOADED, pageLoadProperties)
-    const sendWebVital =
-      (metric: string) =>
-      ({ delta }: Metric) =>
-        sendAnalyticsEvent(SharedEventName.WEB_VITALS, { ...pageLoadProperties, [metric]: delta })
-    getCLS(sendWebVital('cumulative_layout_shift'))
-    getFCP(sendWebVital('first_contentful_paint_ms'))
-    getFID(sendWebVital('first_input_delay_ms'))
-    getLCP(sendWebVital('largest_contentful_paint_ms'))
+    // const pageLoadProperties = { service_worker: serviceWorkerProperty }
+    // sendInitializationEvent(SharedEventName.APP_LOADED, pageLoadProperties)
+    // const sendWebVital =
+    //   (metric: string) =>
+    //   ({ delta }: Metric) =>
+    //     sendAnalyticsEvent(SharedEventName.WEB_VITALS, { ...pageLoadProperties, [metric]: delta })
+    // getCLS(sendWebVital('cumulative_layout_shift'))
+    // getFCP(sendWebVital('first_contentful_paint_ms'))
+    // getFID(sendWebVital('first_input_delay_ms'))
+    // getLCP(sendWebVital('largest_contentful_paint_ms'))
   }, [])
 
   useEffect(() => {
@@ -224,29 +224,29 @@ export default function App() {
             <Suspense fallback={<Loader />}>
               {isLoaded ? (
                 <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      // If we match "/" and # is defined, we are using BrowserRouter and need to redirect.
-                      browserRouterEnabled && hash ? <Navigate to={hash.replace('#', '')} replace /> : <Landing />
-                    }
-                  />
+                  {/*<Route*/}
+                  {/*  path="/"*/}
+                  {/*  element={*/}
+                  {/*    // If we match "/" and # is defined, we are using BrowserRouter and need to redirect.*/}
+                  {/*    browserRouterEnabled && hash ? <Navigate to={hash.replace('#', '')} replace /> : <Landing />*/}
+                  {/*  }*/}
+                  {/*/>*/}
 
-                  <Route path="tokens" element={<Tokens />}>
-                    <Route path=":chainName" />
-                  </Route>
-                  <Route path="tokens/:chainName/:tokenAddress" element={<TokenDetails />} />
-                  {infoPoolPageEnabled && <Route path="pools/:chainName/:poolAddress" element={<PoolDetails />} />}
-                  <Route
-                    path="vote/*"
-                    element={
-                      <Suspense fallback={<LazyLoadSpinner />}>
-                        <Vote />
-                      </Suspense>
-                    }
-                  />
-                  <Route path="create-proposal" element={<Navigate to="/vote/create-proposal" replace />} />
-                  <Route path="send" element={<Navigate to={{ ...location, pathname: '/swap' }} replace />} />
+                  {/*<Route path="tokens" element={<Tokens />}>*/}
+                  {/*  <Route path=":chainName" />*/}
+                  {/*</Route>*/}
+                  {/*<Route path="tokens/:chainName/:tokenAddress" element={<TokenDetails />} />*/}
+                  {/*{infoPoolPageEnabled && <Route path="pools/:chainName/:poolAddress" element={<PoolDetails />} />}*/}
+                  {/*<Route*/}
+                  {/*  path="vote/*"*/}
+                  {/*  element={*/}
+                  {/*    <Suspense fallback={<LazyLoadSpinner />}>*/}
+                  {/*      <Vote />*/}
+                  {/*    </Suspense>*/}
+                  {/*  }*/}
+                  {/*/>*/}
+                  {/*<Route path="create-proposal" element={<Navigate to="/vote/create-proposal" replace />} />*/}
+                  {/*<Route path="send" element={<Navigate to={{ ...location, pathname: '/swap' }} replace />} />*/}
                   <Route path="swap" element={<Swap />} />
 
                   <Route path="pool/v2/find" element={<PoolFinder />} />
@@ -283,54 +283,54 @@ export default function App() {
                   <Route path="migrate/v2" element={<MigrateV2 />} />
                   <Route path="migrate/v2/:address" element={<MigrateV2Pair />} />
 
-                  {!shouldDisableNFTRoutes && (
-                    <>
-                      <Route
-                        path="/nfts"
-                        element={
-                          <Suspense fallback={null}>
-                            <NftExplore />
-                          </Suspense>
-                        }
-                      />
+                  {/*{!shouldDisableNFTRoutes && (*/}
+                  {/*  <>*/}
+                  {/*    <Route*/}
+                  {/*      path="/nfts"*/}
+                  {/*      element={*/}
+                  {/*        <Suspense fallback={null}>*/}
+                  {/*          <NftExplore />*/}
+                  {/*        </Suspense>*/}
+                  {/*      }*/}
+                  {/*    />*/}
 
-                      <Route
-                        path="/nfts/asset/:contractAddress/:tokenId"
-                        element={
-                          <Suspense fallback={null}>
-                            <Asset />
-                          </Suspense>
-                        }
-                      />
+                  {/*    <Route*/}
+                  {/*      path="/nfts/asset/:contractAddress/:tokenId"*/}
+                  {/*      element={*/}
+                  {/*        <Suspense fallback={null}>*/}
+                  {/*          <Asset />*/}
+                  {/*        </Suspense>*/}
+                  {/*      }*/}
+                  {/*    />*/}
 
-                      <Route
-                        path="/nfts/profile"
-                        element={
-                          <Suspense fallback={null}>
-                            <Profile />
-                          </Suspense>
-                        }
-                      />
+                  {/*    <Route*/}
+                  {/*      path="/nfts/profile"*/}
+                  {/*      element={*/}
+                  {/*        <Suspense fallback={null}>*/}
+                  {/*          <Profile />*/}
+                  {/*        </Suspense>*/}
+                  {/*      }*/}
+                  {/*    />*/}
 
-                      <Route
-                        path="/nfts/collection/:contractAddress"
-                        element={
-                          <Suspense fallback={null}>
-                            <Collection />
-                          </Suspense>
-                        }
-                      />
+                  {/*    <Route*/}
+                  {/*      path="/nfts/collection/:contractAddress"*/}
+                  {/*      element={*/}
+                  {/*        <Suspense fallback={null}>*/}
+                  {/*          <Collection />*/}
+                  {/*        </Suspense>*/}
+                  {/*      }*/}
+                  {/*    />*/}
 
-                      <Route
-                        path="/nfts/collection/:contractAddress/activity"
-                        element={
-                          <Suspense fallback={null}>
-                            <Collection />
-                          </Suspense>
-                        }
-                      />
-                    </>
-                  )}
+                  {/*    <Route*/}
+                  {/*      path="/nfts/collection/:contractAddress/activity"*/}
+                  {/*      element={*/}
+                  {/*        <Suspense fallback={null}>*/}
+                  {/*          <Collection />*/}
+                  {/*        </Suspense>*/}
+                  {/*      }*/}
+                  {/*    />*/}
+                  {/*  </>*/}
+                  {/*)}*/}
 
                   <Route path="*" element={<Navigate to="/not-found" replace />} />
                   <Route path="/not-found" element={<NotFound />} />

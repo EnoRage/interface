@@ -30,10 +30,9 @@ export default function SwapHeader({
   return (
     <StyledSwapHeader>
       <HeaderButtonContainer>
-        <ThemedText.SubHeader>
-          <Trans>Swap</Trans>
-        </ThemedText.SubHeader>
-        <SwapBuyFiatButton />
+        {/*<ThemedText.SubHeader>*/}
+        {/*  <Trans>Swap</Trans>*/}
+        {/*</ThemedText.SubHeader>*/}
       </HeaderButtonContainer>
       <RowFixed>
         <SettingsTab autoSlippage={autoSlippage} chainId={chainId} trade={trade} />

@@ -598,7 +598,8 @@ export function Swap({
   const switchingChain = useAppSelector((state) => state.wallets.switchingChain)
   const showOptInSmall = !useScreenSize().navSearchInputVisible
   const isDark = useIsDarkMode()
-  const isUniswapXDefaultEnabled = useUniswapXDefaultEnabled()
+  // const isUniswapXDefaultEnabled = useUniswapXDefaultEnabled()
+  const isUniswapXDefaultEnabled = false
 
   const swapElement = (
     <SwapWrapper isDark={isDark} className={className} id="swap-page">
